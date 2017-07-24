@@ -1,11 +1,18 @@
 {
-  "name": "redbubble_test",
-  "version": "1.0.0",
-  "description": "Redbubble employment coding test",
-  "main": "index.js",
-  "author": "Patrick Stockwell <stockwellpatrick@gmail.com>",
-  "license": "MIT",
-  "devDependencies": {
-    "mocha": "^3.4.2"
-  }
+    "name": "redbubble_test",
+    "version": "1.0.0",
+    "description": "Redbubble employment coding test",
+    "main": "index.js",
+    "author": "Patrick Stockwell <stockwellpatrick@gmail.com>",
+    "license": "MIT",
+    "devDependencies": {
+        "chai": "^4.1.0",
+        "mocha": "^3.4.2"
+    },
+    "dependencies": {
+        "xml2js": "^0.4.17"
+    },
+    "scripts": {
+        "test": "./node_modules/.bin/mocha"
+    }
 }

@@ -11,7 +11,7 @@ const parser = new xml2js.Parser({explicitArray: false});
 * @param: A callback function to be executed when the http response is received
 * @return: none
 */
-exports.getImageData = (url, callback) => {
+module.exports = (url, callback) => {
     http.get(url, (response) => {
 
         // Check for the repsonse status

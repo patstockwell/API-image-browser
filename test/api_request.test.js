@@ -1,5 +1,5 @@
 const expect = require('chai').expect
-const get = require('../modules/api_request').getImageData
+const get = require('../modules/api_request')
 
 let data = {}
 describe('api_request file', function() {

@@ -1,5 +1,10 @@
-const api = require('./lib/api_request')
+const utils = require('./lib/data.utils')
 const fs = require('fs')
+
+// +++++++++++++++++++++++++ FOR DEVELOPMENT ONLY. REMOVE LATER
+const util = require('util')
+const log = (obj) => { console.log(util.inspect(obj, {showHidden: false, depth: null})) }
+// +++++++++++++++++++++++++
 
 let data = {}
 
@@ -18,21 +23,12 @@ if(!url || !directory) {
 }
 
 
-// A callback to pass to the api request function
+// Passed to the api request function as a callback
 // executed after the http request has finished
-function store(newData) {
-    data = newData
-    console.log(data)
+function store(rawData) {
+    data = utils.organiseData(rawData)
+    log(data)
 }
 
 // execute the api call
-api(url, store)
-
-
-fs.writeFile(__dirname + "/" + directory + "/test.html", "Hey there!", function(err) {
-    if(err) {
-        return console.log(err);
-    }
-
-    console.log("The file was saved!");
-});
+utils.callApi(url, store)

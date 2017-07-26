@@ -1,17 +1,40 @@
 const expect = require('chai').expect
 const utils = require('../lib/data.utils')
+const sinon = require('sinon')
+const http = require('http')
+const stream = require('stream')
+const data = require('./data').rawData
 
-// store the data after the first call so each test can reuse it
-let data = {}
 
 describe('data.utils file', function() {
-    // add a 10sec timeout to override the 2sec defaults
-    // allow time for the async call to be made on poor connections
-    this.timeout(10000);
+    // to avoid making the actual http request, sinon.js is used to
+    // stub the method
+    // the expected and data variables are used in the stub
+    before(function () {
+        const data =
+        `<exif>
+            <copyright/>
+            <flash>16</flash>
+            <sharpness>0</sharpness>
+        </exif>`
+        const expected = {
+            statusCode: 200,
+            setEncoding: (x) => {},
+            on: (string, callback) => {
+                string === 'data' ? callback(data) : callback()
+            }
+        }
+        sinon.stub(http, 'get').yields(expected)
+    })
+
+    after(function () {
+        // remove the stubbed version of get() and restore the original
+        http.get.restore()
+    })
+
     describe('The getImageData function', function() {
         it('should execute the callback', function(done) {
             function callback(x) {
-                data = x
                 // if done is executed then callback() was called
                 done()
             }
@@ -19,9 +42,10 @@ describe('data.utils file', function() {
         })
     })
 
+
     describe('The data object', function() {
         it('should exist', function() {
-            expect(data).to.include.all.keys('works');
+            expect(data).to.include.all.keys('works')
         })
     })
 
@@ -34,13 +58,13 @@ describe('data.utils file', function() {
         it('should return an object with a camera make as a key', function() {
             let make = undefined
             if('NIKON CORPORATION' in makesAndModels) {
-                    make = makesAndModels['NIKON CORPORATION']
+                make = makesAndModels['NIKON CORPORATION']
             }
             else if('Canon' in makesAndModels) {
-                    make = makesAndModels['Canon']
+                make = makesAndModels['Canon']
             }
             else if('FUJIFILM' in makesAndModels) {
-                    make = makesAndModels['FUJIFILM']
+                make = makesAndModels['FUJIFILM']
             }
             expect(make).to.not.be.an('undefined')
         })

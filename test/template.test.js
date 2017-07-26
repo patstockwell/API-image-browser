@@ -34,7 +34,6 @@ describe('In template file', function() {
             expect(string.indexOf('<h1>Here is the Heading</h1>') > -1).to.be.true
         })
         it('should contain no more than 10 images', function() {
-            console.log(string)
             expect(string.split("img").length - 1 <= 10).to.be.true
         })
     })

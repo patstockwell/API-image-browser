@@ -14,6 +14,17 @@ describe('In template file', function() {
                 ],
                 [
                     'http://ih1.redbubble.net/work.2041.1.flat,300x300,075,f.jpg',
+                    'http://ih1.redbubble.net/work.2041.1.flat,300x300,075,f.jpg',
+                    'http://ih1.redbubble.net/work.2041.1.flat,300x300,075,f.jpg',
+                    'http://ih1.redbubble.net/work.2041.1.flat,300x300,075,f.jpg',
+                    'http://ih1.redbubble.net/work.2041.1.flat,300x300,075,f.jpg',
+                    'http://ih1.redbubble.net/work.2041.1.flat,300x300,075,f.jpg',
+                    'http://ih1.redbubble.net/work.2041.1.flat,300x300,075,f.jpg',
+                    'http://ih1.redbubble.net/work.2041.1.flat,300x300,075,f.jpg',
+                    'http://ih1.redbubble.net/work.2041.1.flat,300x300,075,f.jpg',
+                    'http://ih1.redbubble.net/work.2041.1.flat,300x300,075,f.jpg',
+                    'http://ih1.redbubble.net/work.2041.1.flat,300x300,075,f.jpg',
+                    'http://ih1.redbubble.net/work.2041.1.flat,300x300,075,f.jpg',
                     'http://ih1.redbubble.net/work.240509.1.flat,300x300,075,f.jpg'
                 ]
             )
@@ -21,6 +32,10 @@ describe('In template file', function() {
         })
         it('should contain a heading with the camera make', function() {
             expect(string.indexOf('<h1>Here is the Heading</h1>') > -1).to.be.true
+        })
+        it('should contain no more than 10 images', function() {
+            console.log(string)
+            expect(string.split("img").length - 1 <= 10).to.be.true
         })
     })
 })

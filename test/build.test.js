@@ -17,6 +17,10 @@ describe('the build module', function() {
             const stillSomeHTMLString = build.mainIndex('a;sdlkfja;ds02934857   ....... asdf', '_)(*Plj;asdf)')
             expect(stillSomeHTMLString).to.be.a('string')
         })
+        it('should return string when the data is empty', function() {
+            const someArray = build.mainIndex()
+            expect(someArray).to.be.a('string')
+        })
     })
     describe('the models function', function() {
         it('should return an array when no directory argument is given', function() {
@@ -30,6 +34,10 @@ describe('the build module', function() {
             const someArray = build.models('lsk(874#@#% ..  |\][])')
             expect(someArray).to.have.lengthOf(0)
         })
+        it('should return an array when the data is empty', function() {
+            const someArray = build.models()
+            expect(someArray).to.be.a('array')
+        })
     })
     describe('the makes function', function() {
         it('should return an array when no directory argument is given', function() {
@@ -42,6 +50,10 @@ describe('the build module', function() {
         it('should return an empty array when the data is garbage', function() {
             const someArray = build.makes('lsk(874#@#% ..  |\][])')
             expect(someArray).to.have.lengthOf(0)
+        })
+        it('should return an array when the data is empty', function() {
+            const someArray = build.makes()
+            expect(someArray).to.be.a('array')
         })
     })
 })

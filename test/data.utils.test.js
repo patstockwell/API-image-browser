@@ -68,6 +68,13 @@ describe('data.utils file', function() {
             }
             expect(make).to.not.be.an('undefined')
         })
-
+        it('should return an object when the input is garbage', function() {
+            makesAndModels = utils.organiseData('as;dlkf )(*&  .,)')
+            expect(makesAndModels).to.be.an('object')
+        })
+        it('should return an object when the input is empty', function() {
+            makesAndModels = utils.organiseData()
+            expect(makesAndModels).to.be.an('object')
+        })
     })
 })

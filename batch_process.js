@@ -1,21 +1,14 @@
 const utils = require('./lib/data.utils')
 const fs = require('fs')
-
-// +++++++++++++++++++++++++ FOR DEVELOPMENT ONLY. REMOVE LATER
-const util = require('util')
-const log = (obj) => { console.log(util.inspect(obj, {showHidden: false, depth: null})) }
-// +++++++++++++++++++++++++
-
-let data = {}
+const build = require('./lib/build')
 
 // validate command line arguments
 const url = process.argv[2]
 const directory = process.argv[3]
 
 if(!url || !directory) {
-    console.log(`
-        Batch Process failed.
-        Please supply a URL and an output directory
+    console.log(
+        `Please supply a URL and an output directory
         $ node batch_process.js [url] [directory]
 
         `)
@@ -23,12 +16,15 @@ if(!url || !directory) {
 }
 
 
-// Passed to the api request function as a callback
+// wrap file and data processing in a callback
 // executed after the http request has finished
-function store(rawData) {
-    data = utils.organiseData(rawData)
-    log(data)
+function storeAndProcess(rawData) {
+    parsedData = utils.organiseData(rawData)
+    build.mainIndex(parsedData, rawData, directory)
+    build.models(parsedData, directory)
+    build.makes(parsedData, directory)
+    return
 }
 
-// execute the api call
-utils.callApi(url, store)
+// execute the http request
+utils.callApi(url, storeAndProcess)

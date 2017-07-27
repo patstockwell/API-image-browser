@@ -11,3 +11,12 @@ body {
 .camera-link {
     margin: 5px;
 }
+
+header {
+    width: 100%;
+}
+
+nav {
+    background-color: #f7f7f7;
+    padding: 10px;
+}

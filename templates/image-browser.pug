@@ -13,9 +13,9 @@ html
     body
         .container: .row
             header
-                h1= heading
-                nav
-                    h3.sub-heading= subHeading
+                h1.display-3.py-5= heading
+                h3.sub-heading.lead= subHeading
+                nav.my-3
                     each link in navLinks
                         a(href=`${link}.html`).camera-link.btn.btn-outline-success.btn-sm= link
         .container: .row.justify-content-around

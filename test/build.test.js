@@ -11,7 +11,7 @@ describe('the build module', function() {
             expect(string).to.be.a('string')
         })
         it('should contain a heading with index', function() {
-            expect(string.indexOf('<h1>Index Page</h1>') > -1).to.be.true
+            expect(string.indexOf('<h1 class="display-3 py-5">Index Page</h1>') > -1).to.be.true
         })
         it('should still return a string when the data is garbage', function() {
             const stillSomeHTMLString = build.mainIndex('a;sdlkfja;ds02934857   ....... asdf', '_)(*Plj;asdf)')

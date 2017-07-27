@@ -23,6 +23,7 @@ function storeAndProcess(rawData) {
     build.mainIndex(parsedData, rawData, directory)
     build.models(parsedData, directory)
     build.makes(parsedData, directory)
+    build.css(directory)
     return
 }
 

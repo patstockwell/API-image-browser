@@ -11,11 +11,13 @@ html
         link(rel='stylesheet', href='rb-style.css')
         
     body
-        header
-            h1= heading
-            nav
-                h3.sub-heading= subHeading
-                each link in navLinks
-                    a(href=`${link}.html`)= link
-        each url in urls
-            img(src=url)
+        .container: .row
+            header
+                h1= heading
+                nav
+                    h3.sub-heading= subHeading
+                    each link in navLinks
+                        a(href=`${link}.html`).camera-link.btn.btn-outline-success.btn-sm= link
+        .container: .row.justify-content-around
+            each url in urls
+                .image-box: img(src=url)

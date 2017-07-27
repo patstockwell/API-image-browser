@@ -1,0 +1,17 @@
+
+doctype html
+
+html
+    head
+        meta(charset='utf-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1')
+        title API Image Browser
+    body
+        header
+            h1.heading heading
+            nav
+                h3.subheading subHeading
+                each link in data.navLinks
+					a(href=`${link}.html`)= link
+        each url in data.urls
+            img(src=url)

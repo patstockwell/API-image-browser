@@ -8,8 +8,8 @@ Node v6.9.2
 
 yarn 0.24.5
 
+### Install the modules
 
-### Run the processor
 From the project root
 ```script
 yarn install
@@ -19,7 +19,8 @@ Or you can use npm
 npm install
 ```
 
-then
+### Run the processor
+
 ```script
 node batch_process.js <url> <directory>
 ```

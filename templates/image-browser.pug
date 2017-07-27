@@ -8,10 +8,10 @@ html
         title API Image Browser
     body
         header
-            h1.heading heading
+            h1.heading= heading
             nav
-                h3.subheading subHeading
-                each link in data.navLinks
-					a(href=`${link}.html`)= link
-        each url in data.urls
+                h3.sub-heading= subHeading
+                each link in navLinks
+                    a(href=`${link}.html`)= link
+        each url in urls
             img(src=url)
